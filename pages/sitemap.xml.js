@@ -47,53 +47,69 @@ function generateLocalesSitemap(link, allPages, locale) {
       loc: `${link}${locale}`,
       lastmod: dateNow,
       changefreq: 'daily',
-      priority: '0.7'
+      priority: '1.0'
     },
     {
       loc: `${link}${locale}/archive`,
       lastmod: dateNow,
       changefreq: 'daily',
-      priority: '0.7'
+      priority: '0.8'
     },
     {
       loc: `${link}${locale}/category`,
       lastmod: dateNow,
       changefreq: 'daily',
-      priority: '0.7'
+      priority: '0.6'
     },
     {
       loc: `${link}${locale}/rss/feed.xml`,
       lastmod: dateNow,
       changefreq: 'daily',
-      priority: '0.7'
+      priority: '0.5'
     },
     {
       loc: `${link}${locale}/search`,
       lastmod: dateNow,
       changefreq: 'daily',
-      priority: '0.7'
+      priority: '0.5'
     },
     {
       loc: `${link}${locale}/tag`,
       lastmod: dateNow,
       changefreq: 'daily',
-      priority: '0.7'
+      priority: '0.6'
     }
   ]
-  const postFields =
-    allPages
-      ?.filter(p => p.status === BLOG.NOTION_PROPERTY_NAME.status_publish)
-      ?.map(post => {
-        const slugWithoutLeadingSlash = post?.slug.startsWith('/')
-          ? post?.slug?.slice(1)
-          : post.slug
-        return {
-          loc: `${link}${locale}/${slugWithoutLeadingSlash}`,
-          lastmod: new Date(post?.publishDay).toISOString().split('T')[0],
-          changefreq: 'daily',
-          priority: '0.7'
-        }
-      }) ?? []
+  
+  // Filter for blog posts only: type === 'Post' AND status === 'Published'
+  // This ensures only blog posts are included, matching how the site displays them
+  const blogPosts = allPages?.filter(p => 
+    p?.type === BLOG.NOTION_PROPERTY_NAME.type_post && 
+    p?.status === BLOG.NOTION_PROPERTY_NAME.status_publish &&
+    p?.slug // Ensure slug exists
+  ) || []
+  
+  const postFields = blogPosts.map(post => {
+    const slugWithoutLeadingSlash = post?.slug?.startsWith('/')
+      ? post?.slug?.slice(1)
+      : post.slug
+    
+    // Use publishDay, lastEditedDate, or current date as fallback
+    const lastMod = post?.publishDay 
+      ? new Date(post.publishDay).toISOString().split('T')[0]
+      : (post?.lastEditedDate 
+          ? new Date(post.lastEditedDate).toISOString().split('T')[0]
+          : dateNow)
+    
+    return {
+      loc: `${link}${locale}/${slugWithoutLeadingSlash}`,
+      lastmod: lastMod,
+      changefreq: 'weekly',
+      priority: '0.8'
+    }
+  })
+
+  console.log(`[Sitemap] Generated ${postFields.length} blog post URLs for locale: ${locale || 'default'}`)
 
   return defaultFields.concat(postFields)
 }
