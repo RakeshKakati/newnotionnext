@@ -29,6 +29,10 @@ export const getServerSideProps = async ctx => {
 
   fields = getUniqueFields(fields);
 
+  // Log total URLs for debugging (especially useful for 500+ posts)
+  console.log(`[Sitemap] Total URLs generated: ${fields.length}`)
+  console.log(`[Sitemap] Blog posts included: ${fields.filter(f => f.loc.includes('/') && !f.loc.endsWith('/archive') && !f.loc.endsWith('/category') && !f.loc.endsWith('/tag') && !f.loc.endsWith('/search') && !f.loc.endsWith('/rss/feed.xml')).length - 1}`) // Subtract 1 for homepage
+
   // 缓存
   ctx.res.setHeader(
     'Cache-Control',
