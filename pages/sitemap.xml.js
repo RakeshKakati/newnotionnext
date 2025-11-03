@@ -18,11 +18,24 @@ export const getServerSideProps = async ctx => {
       pageId: id,
       from: 'sitemap.xml'
     })
-    const link = siteConfig(
+    // Force use of BLOG.LINK from blog.config.js to ensure correct domain
+    // Override any Notion config that might have the old domain
+    let link = siteConfig(
       'LINK',
-      siteData?.siteInfo?.link,
+      BLOG.LINK, // Use blog.config.js as primary default
       siteData.NOTION_CONFIG
     )
+    
+    // If LINK still contains old domain, force override to govtdoor.com
+    if (link && (link.includes('newswireindiaonline.com') || link.includes('newnotionnext.vercel.app'))) {
+      link = 'https://govtdoor.com'
+      console.log(`[Sitemap] Overriding old domain in LINK config to: ${link}`)
+    }
+    
+    // Normalize link: ensure it doesn't end with trailing slash for consistency
+    if (link && link.endsWith('/')) {
+      link = link.slice(0, -1)
+    }
     const localeFields = generateLocalesSitemap(link, siteData.allPages, locale)
     fields = fields.concat(localeFields)
   }
