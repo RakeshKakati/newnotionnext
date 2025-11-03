@@ -74,6 +74,108 @@ const Style = () => {
       margin-bottom: 1.5rem;
     }
 
+    /* Article content dark mode styling */
+    #theme-medium #article-wrapper {
+      color: rgba(0, 0, 0, 0.84);
+      background: transparent;
+    }
+
+    .dark #theme-medium #article-wrapper {
+      color: rgba(255, 255, 255, 0.84) !important;
+      background: transparent;
+    }
+
+    /* Notion article content styling */
+    #theme-medium #notion-article {
+      color: rgba(0, 0, 0, 0.84);
+    }
+
+    .dark #theme-medium #notion-article {
+      color: rgba(255, 255, 255, 0.84) !important;
+    }
+
+    /* Notion rendered content - paragraphs, headings, etc */
+    #theme-medium #notion-article p,
+    #theme-medium #notion-article h1,
+    #theme-medium #notion-article h2,
+    #theme-medium #notion-article h3,
+    #theme-medium #notion-article h4,
+    #theme-medium #notion-article h5,
+    #theme-medium #notion-article h6,
+    #theme-medium #notion-article li,
+    #theme-medium #notion-article span:not(.notion-inline-code),
+    #theme-medium #notion-article div[class*="notion"] {
+      color: rgba(0, 0, 0, 0.84);
+    }
+
+    .dark #theme-medium #notion-article p,
+    .dark #theme-medium #notion-article h1,
+    .dark #theme-medium #notion-article h2,
+    .dark #theme-medium #notion-article h3,
+    .dark #theme-medium #notion-article h4,
+    .dark #theme-medium #notion-article h5,
+    .dark #theme-medium #notion-article h6,
+    .dark #theme-medium #notion-article li,
+    .dark #theme-medium #notion-article span:not(.notion-inline-code),
+    .dark #theme-medium #notion-article div[class*="notion"] {
+      color: rgba(255, 255, 255, 0.84) !important;
+    }
+
+    /* Override Notion's default text colors for dark mode */
+    .dark #theme-medium .notion-text,
+    .dark #theme-medium .notion-h,
+    .dark #theme-medium .notion-list-item,
+    .dark #theme-medium .notion-toggle,
+    .dark #theme-medium .notion-quote,
+    .dark #theme-medium .notion-callout,
+    .dark #theme-medium .notion-page-content,
+    .dark #theme-medium .notion-page-content-inner,
+    .dark #theme-medium [class*="notion-column"],
+    .dark #theme-medium [class*="notion-list"],
+    .dark #theme-medium [class*="notion-text"] {
+      color: rgba(255, 255, 255, 0.84) !important;
+    }
+
+    /* Ensure all text in article respects dark mode - more specific selectors */
+    .dark #theme-medium #article-wrapper .notion,
+    .dark #theme-medium #article-wrapper .notion-page-content,
+    .dark #theme-medium #article-wrapper .notion-page-content-inner {
+      color: rgba(255, 255, 255, 0.84) !important;
+    }
+
+    /* Light mode - ensure text is dark */
+    #theme-medium #article-wrapper .notion,
+    #theme-medium #article-wrapper .notion-page-content,
+    #theme-medium #article-wrapper .notion-page-content-inner {
+      color: rgba(0, 0, 0, 0.84) !important;
+    }
+
+    /* Article section background */
+    #theme-medium #article-wrapper,
+    #theme-medium section {
+      background: transparent;
+    }
+
+    /* Override Notion CSS variables for dark mode */
+    .dark #theme-medium #notion-article {
+      --fg-color: rgba(255, 255, 255, 0.84) !important;
+      --fg-color-1: rgba(255, 255, 255, 0.16) !important;
+      --fg-color-2: rgba(255, 255, 255, 0.4) !important;
+      --fg-color-3: rgba(255, 255, 255, 0.6) !important;
+      --fg-color-4: rgba(255, 255, 255, 0.84) !important;
+      --fg-color-6: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    /* Light mode - ensure dark text */
+    #theme-medium #notion-article {
+      --fg-color: rgba(0, 0, 0, 0.84) !important;
+      --fg-color-1: rgba(0, 0, 0, 0.16) !important;
+      --fg-color-2: rgba(0, 0, 0, 0.4) !important;
+      --fg-color-3: rgba(0, 0, 0, 0.6) !important;
+      --fg-color-4: rgba(0, 0, 0, 0.84) !important;
+      --fg-color-6: rgba(0, 0, 0, 0.8) !important;
+    }
+
     /* Remove unnecessary borders and shadows */
     #theme-medium .border-b {
       border-color: rgba(0, 0, 0, 0.09) !important;

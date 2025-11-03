@@ -222,12 +222,12 @@ const LayoutSlug = props => {
           <ArticleInfo {...props} />
 
           {/* Notion文章主体 */}
-          <article id='article-wrapper' className='px-1 max-w-4xl'>
+          <article id='article-wrapper' className='px-1 max-w-4xl text-black dark:text-white'>
             {post && <NotionPage post={post} />}
           </article>
 
           {/* 文章底部区域  */}
-          <section>
+          <section className='text-black dark:text-white'>
             {/* 分享 */}
             <ShareBar post={post} />
             {/* 文章分类和标签信息 */}
