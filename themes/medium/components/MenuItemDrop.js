@@ -22,7 +22,7 @@ export const MenuItemDrop = ({ link }) => {
       {hasSubMenu && (
         <div
           className={
-            'px-3 h-full whitespace-nowrap duration-300 text-sm justify-between text-black dark:text-white cursor-pointer flex flex-nowrap items-center ' +
+            'px-3 h-full whitespace-nowrap duration-300 text-sm justify-between text-black cursor-pointer flex flex-nowrap items-center ' +
             (selected
               ? 'font-semibold'
               : 'hover:opacity-70')
@@ -40,7 +40,7 @@ export const MenuItemDrop = ({ link }) => {
       {!hasSubMenu && (
         <div
           className={
-            'px-3 h-full whitespace-nowrap duration-300 text-sm justify-between text-black dark:text-white cursor-pointer flex flex-nowrap items-center ' +
+            'px-3 h-full whitespace-nowrap duration-300 text-sm justify-between text-black cursor-pointer flex flex-nowrap items-center ' +
             (selected
               ? 'font-semibold'
               : 'hover:opacity-70')
@@ -54,12 +54,12 @@ export const MenuItemDrop = ({ link }) => {
       {/* 子菜单 */}
       {hasSubMenu && (
         <ul
-          className={`${show ? 'visible opacity-100 top-14 ' : 'invisible opacity-0 top-12 '} border border-gray-200 bg-white dark:bg-black dark:border-gray-800 transition-all duration-300 z-20 absolute block shadow-lg rounded-sm`}>
+          className={`${show ? 'visible opacity-100 top-14 ' : 'invisible opacity-0 top-12 '} border border-gray-200 bg-white transition-all duration-300 z-20 absolute block shadow-lg rounded-sm`}>
           {link?.subMenus?.map(sLink => {
             return (
               <li
                 key={sLink.id}
-                className='not:last-child:border-b-0 border-b border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200 py-3 pr-6 pl-3'>
+                className='not:last-child:border-b-0 border-b border-gray-100 text-gray-700 hover:bg-gray-50 transition-all duration-200 py-3 pr-6 pl-3'>
                 <Link href={sLink.href} target={link?.target}>
                   <span className='text-sm'>
                     {link?.icon && <i className={sLink?.icon}> &nbsp; </i>}

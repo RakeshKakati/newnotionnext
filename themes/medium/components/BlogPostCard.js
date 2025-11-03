@@ -16,13 +16,13 @@ const BlogPostCard = ({ post, showSummary }) => {
   return (
     <div
       key={post.id}
-      className='mb-12 pb-8 border-b border-gray-200 dark:border-gray-800'>
+      className='mb-12 pb-8 border-b border-gray-200'>
       <header className='flex flex-col w-full'>
         <Link
           href={post?.href}
           passHref
           className='group cursor-pointer'>
-          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-6 text-black dark:text-white group-hover:opacity-70 transition-opacity'>
+          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-6 text-black group-hover:opacity-70 transition-opacity'>
             {siteConfig('MEDIUM_POST_LIST_COVER', null, CONFIG) && post.pageCoverThumbnail && (
               <div className='w-full h-64 md:h-96 object-cover overflow-hidden mb-6 rounded-sm'>
                 <LazyImage
@@ -39,31 +39,31 @@ const BlogPostCard = ({ post, showSummary }) => {
           </h2>
         </Link>
 
-        <div className='flex items-center flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400 mb-6'>
-          <span className='text-black dark:text-white font-medium'>{post.date?.start_date}</span>
+        <div className='flex items-center flex-wrap gap-2 text-sm text-gray-500 mb-6'>
+          <span className='text-black font-medium'>{post.date?.start_date}</span>
           {siteConfig('MEDIUM_POST_LIST_CATEGORY', null, CONFIG) && post.category && (
             <>
-              <span className='text-gray-400 dark:text-gray-600 mx-1'>·</span>
+              <span className='text-gray-400 mx-1'>·</span>
               <CategoryItem category={post.category} />
             </>
           )}
           {siteConfig('MEDIUM_POST_LIST_TAG', null, CONFIG) &&
             post?.tagItems?.map(tag => (
               <span key={tag.name}>
-                <span className='text-gray-400 dark:text-gray-600 mx-1'>·</span>
+                <span className='text-gray-400 mx-1'>·</span>
                 <TagItemMini tag={tag} />
               </span>
             ))}
           {siteConfig('MEDIUM_POST_LIST_TAG', null, CONFIG) && post?.tagItems?.length > 0 && (
             <>
-              <span className='text-gray-400 dark:text-gray-600 mx-1'>·</span>
-              <TwikooCommentCount post={post} className='text-gray-500 dark:text-gray-400' />
+              <span className='text-gray-400 mx-1'>·</span>
+              <TwikooCommentCount post={post} className='text-gray-500' />
             </>
           )}
         </div>
 
         {(!showPreview || showSummary) && post.summary && (
-          <main className='mt-4 text-base text-gray-700 dark:text-gray-300 leading-relaxed font-normal'>
+          <main className='mt-4 text-base text-gray-700 leading-relaxed font-normal'>
             {post.summary}
           </main>
         )}
@@ -71,11 +71,11 @@ const BlogPostCard = ({ post, showSummary }) => {
         {showPreview && (
           <div className='mt-4'>
             <NotionPage post={post} />
-            <div className='pt-6 mt-6 border-t border-gray-200 dark:border-gray-800'>
+            <div className='pt-6 mt-6 border-t border-gray-200'>
               <Link
                 href={post?.href}
                 passHref
-                className='inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:opacity-70 transition-opacity'>
+                className='inline-flex items-center text-sm font-medium text-gray-700 hover:opacity-70 transition-opacity'>
                 {locale.COMMON.ARTICLE_DETAIL}
                 <i className='ml-2 fas fa-arrow-right text-xs' />
               </Link>

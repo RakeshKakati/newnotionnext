@@ -7,7 +7,7 @@ import { siteConfig } from '@/lib/config'
  */
 const SocialButton = () => {
   return (
-    <div className='space-x-4 text-lg text-gray-500 dark:text-gray-500 flex-wrap flex justify-center '>
+    <div className='space-x-4 text-lg text-gray-500 flex-wrap flex justify-center '>
       {siteConfig('CONTACT_GITHUB') && (
         <a
           target='_blank'

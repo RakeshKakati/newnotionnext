@@ -75,7 +75,7 @@ const LayoutBase = props => {
 
       <div
         id='theme-medium'
-        className={`${siteConfig('FONT_STYLE')} bg-white dark:bg-black w-full h-full min-h-screen justify-center dark:text-gray-300 scroll-smooth`}>
+        className={`${siteConfig('FONT_STYLE')} bg-white w-full h-full min-h-screen justify-center scroll-smooth`}>
         <main
           id='wrapper'
           className={
@@ -118,7 +118,7 @@ const LayoutBase = props => {
           {/* 桌面端右侧 */}
           {fullWidth ? null : (
             <div
-              className={`hidden xl:block border-l border-gray-200 dark:border-gray-800 w-80 flex-shrink-0 relative z-10 bg-white dark:bg-black`}>
+              className={`hidden xl:block border-l border-gray-200 w-80 flex-shrink-0 relative z-10 bg-white`}>
               <div className='py-14 px-6 sticky top-0'>
                 <Tabs>
                   {slotRight}
@@ -222,12 +222,12 @@ const LayoutSlug = props => {
           <ArticleInfo {...props} />
 
           {/* Notion文章主体 */}
-          <article id='article-wrapper' className='px-1 max-w-4xl text-black dark:text-white'>
+          <article id='article-wrapper' className='px-1 max-w-4xl text-black'>
             {post && <NotionPage post={post} />}
           </article>
 
           {/* 文章底部区域  */}
-          <section className='text-black dark:text-white'>
+          <section className='text-black'>
             {/* 分享 */}
             <ShareBar post={post} />
             {/* 文章分类和标签信息 */}
@@ -352,7 +352,7 @@ const Layout404 = props => {
   return (
     <>
       <div className='text-black w-full h-screen text-center justify-center content-center items-center flex flex-col'>
-        <div className='dark:text-gray-200'>
+        <div>
           <h2 className='inline-block border-r-2 border-gray-600 mr-2 px-3 py-2 align-top'>
             404
           </h2>
@@ -375,8 +375,8 @@ const LayoutCategoryIndex = props => {
   const { locale } = useGlobal()
   return (
     <>
-      <div className='bg-white dark:bg-gray-700 py-10'>
-        <div className='dark:text-gray-200 mb-5'>
+      <div className='bg-white py-10'>
+        <div className='mb-5'>
           <i className='mr-4 fas fa-th' />
           {locale.COMMON.CATEGORY}:
         </div>
@@ -390,7 +390,7 @@ const LayoutCategoryIndex = props => {
                 legacyBehavior>
                 <div
                   className={
-                    'hover:text-black dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600 px-5 cursor-pointer py-2 hover:bg-gray-100'
+                    'hover:text-black px-5 cursor-pointer py-2 hover:bg-gray-100'
                   }>
                   <i className='mr-4 fas fa-folder' />
                   {category.name}({category.count})
@@ -414,8 +414,8 @@ const LayoutTagIndex = props => {
   const { locale } = useGlobal()
   return (
     <>
-      <div className='bg-white dark:bg-gray-700 py-10'>
-        <div className='dark:text-gray-200 mb-5'>
+      <div className='bg-white py-10'>
+        <div className='mb-5'>
           <i className='mr-4 fas fa-tag' />
           {locale.COMMON.TAGS}:
         </div>

@@ -22,7 +22,7 @@ const RecentPosts = ({ latestPosts, currentPost }) => {
 
   return (
     <div className='mb-8'>
-      <h3 className='text-sm font-semibold text-black dark:text-white mb-4 uppercase tracking-wide'>
+      <h3 className='text-sm font-semibold text-black mb-4 uppercase tracking-wide'>
         {locale.COMMON.LATEST_POSTS || 'Recent Posts'}
       </h3>
       <div className='space-y-4'>
@@ -42,11 +42,11 @@ const RecentPosts = ({ latestPosts, currentPost }) => {
                 </div>
               )}
               <div className='flex-1 min-w-0'>
-                <h4 className='text-sm font-medium text-black dark:text-white line-clamp-2 group-hover:opacity-70 transition-opacity leading-snug'>
+                <h4 className='text-sm font-medium text-black line-clamp-2 group-hover:opacity-70 transition-opacity leading-snug'>
                   {post.title}
                 </h4>
                 {post.date?.start_date && (
-                  <p className='text-xs text-gray-500 dark:text-gray-400 mt-1'>
+                  <p className='text-xs text-gray-500 mt-1'>
                     {post.date.start_date}
                   </p>
                 )}

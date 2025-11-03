@@ -2,6 +2,7 @@
 /**
  * Medium.com inspired styles
  * Clean, minimalist typography and spacing
+ * Light mode only
  */
 const Style = () => {
   return <style jsx global>{`
@@ -14,18 +15,9 @@ const Style = () => {
       background: #ffffff !important;
     }
 
-    #theme-medium.dark {
-      color: rgba(255, 255, 255, 0.84) !important;
-      background-color: #000000 !important;
-    }
-
     /* Clean navigation bar like Medium */
     #top-nav {
       border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-    }
-
-    .dark #top-nav {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
     }
 
     /* Article cards with Medium styling */
@@ -33,11 +25,6 @@ const Style = () => {
     #theme-medium #posts-wrapper > div {
       border-bottom: 1px solid rgba(0, 0, 0, 0.09);
       padding-bottom: 2rem;
-    }
-
-    .dark #theme-medium article,
-    .dark #theme-medium #posts-wrapper > div {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
     }
 
     /* Clean link styles */
@@ -49,10 +36,6 @@ const Style = () => {
 
     #theme-medium a:hover {
       opacity: 0.7;
-    }
-
-    .dark #theme-medium a {
-      color: rgba(255, 255, 255, 0.84);
     }
 
     /* Medium-style headings */
@@ -74,24 +57,15 @@ const Style = () => {
       margin-bottom: 1.5rem;
     }
 
-    /* Article content dark mode styling */
+    /* Article content styling */
     #theme-medium #article-wrapper {
       color: rgba(0, 0, 0, 0.84);
-      background: transparent;
-    }
-
-    .dark #theme-medium #article-wrapper {
-      color: rgba(255, 255, 255, 0.84) !important;
       background: transparent;
     }
 
     /* Notion article content styling */
     #theme-medium #notion-article {
       color: rgba(0, 0, 0, 0.84);
-    }
-
-    .dark #theme-medium #notion-article {
-      color: rgba(255, 255, 255, 0.84) !important;
     }
 
     /* Notion rendered content - paragraphs, headings, etc */
@@ -108,42 +82,7 @@ const Style = () => {
       color: rgba(0, 0, 0, 0.84);
     }
 
-    .dark #theme-medium #notion-article p,
-    .dark #theme-medium #notion-article h1,
-    .dark #theme-medium #notion-article h2,
-    .dark #theme-medium #notion-article h3,
-    .dark #theme-medium #notion-article h4,
-    .dark #theme-medium #notion-article h5,
-    .dark #theme-medium #notion-article h6,
-    .dark #theme-medium #notion-article li,
-    .dark #theme-medium #notion-article span:not(.notion-inline-code),
-    .dark #theme-medium #notion-article div[class*="notion"] {
-      color: rgba(255, 255, 255, 0.84) !important;
-    }
-
-    /* Override Notion's default text colors for dark mode */
-    .dark #theme-medium .notion-text,
-    .dark #theme-medium .notion-h,
-    .dark #theme-medium .notion-list-item,
-    .dark #theme-medium .notion-toggle,
-    .dark #theme-medium .notion-quote,
-    .dark #theme-medium .notion-callout,
-    .dark #theme-medium .notion-page-content,
-    .dark #theme-medium .notion-page-content-inner,
-    .dark #theme-medium [class*="notion-column"],
-    .dark #theme-medium [class*="notion-list"],
-    .dark #theme-medium [class*="notion-text"] {
-      color: rgba(255, 255, 255, 0.84) !important;
-    }
-
-    /* Ensure all text in article respects dark mode - more specific selectors */
-    .dark #theme-medium #article-wrapper .notion,
-    .dark #theme-medium #article-wrapper .notion-page-content,
-    .dark #theme-medium #article-wrapper .notion-page-content-inner {
-      color: rgba(255, 255, 255, 0.84) !important;
-    }
-
-    /* Light mode - ensure text is dark */
+    /* Ensure all text in article */
     #theme-medium #article-wrapper .notion,
     #theme-medium #article-wrapper .notion-page-content,
     #theme-medium #article-wrapper .notion-page-content-inner {
@@ -154,16 +93,6 @@ const Style = () => {
     #theme-medium #article-wrapper,
     #theme-medium section {
       background: transparent;
-    }
-
-    /* Override Notion CSS variables for dark mode */
-    .dark #theme-medium #notion-article {
-      --fg-color: rgba(255, 255, 255, 0.84) !important;
-      --fg-color-1: rgba(255, 255, 255, 0.16) !important;
-      --fg-color-2: rgba(255, 255, 255, 0.4) !important;
-      --fg-color-3: rgba(255, 255, 255, 0.6) !important;
-      --fg-color-4: rgba(255, 255, 255, 0.84) !important;
-      --fg-color-6: rgba(255, 255, 255, 0.8) !important;
     }
 
     /* Light mode - ensure dark text */
@@ -181,10 +110,6 @@ const Style = () => {
       border-color: rgba(0, 0, 0, 0.09) !important;
     }
 
-    .dark #theme-medium .border-b {
-      border-color: rgba(255, 255, 255, 0.09) !important;
-    }
-
     /* Clean buttons */
     #theme-medium button {
       font-family: inherit;
@@ -195,19 +120,10 @@ const Style = () => {
       border-left: 1px solid rgba(0, 0, 0, 0.09);
     }
 
-    .dark #theme-medium #container-wrapper ~ div {
-      border-left: 1px solid rgba(255, 255, 255, 0.09);
-    }
-
     /* Footer minimal styling */
     #theme-medium footer {
       border-top: 1px solid rgba(0, 0, 0, 0.09);
       color: rgba(0, 0, 0, 0.54);
-    }
-
-    .dark #theme-medium footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.09);
-      color: rgba(255, 255, 255, 0.54);
     }
   `}</style>
 }

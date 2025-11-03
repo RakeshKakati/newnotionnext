@@ -13,7 +13,7 @@ export default function BottomMenuBar({ post, className }) {
   return (
     <div
       className={
-        'sticky z-10 bottom-0 w-full h-12 bg-white dark:bg-hexo-black-gray ' +
+        'sticky z-10 bottom-0 w-full h-12 bg-white ' +
         className
       }>
       <div className='flex justify-between h-full shadow-card'>

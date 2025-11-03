@@ -1,5 +1,4 @@
 import { BeiAnGongAn } from '@/components/BeiAnGongAn'
-import DarkModeButton from '@/components/DarkModeButton'
 import { siteConfig } from '@/lib/config'
 
 const Footer = ({ title }) => {
@@ -10,13 +9,10 @@ const Footer = ({ title }) => {
     parseInt(since) < currentYear ? since + '-' + currentYear : currentYear
 
   return (
-    <footer className='z-10 bg-white dark:bg-black flex-shrink-0 justify-center text-center m-auto w-full leading-6 text-sm py-12 px-6 mt-16 border-t border-gray-200 dark:border-gray-800'>
-      <div className='mb-4'>
-        <DarkModeButton />
-      </div>
-      <div className='text-gray-500 dark:text-gray-400 space-y-2'>
+    <footer className='z-10 bg-white flex-shrink-0 justify-center text-center m-auto w-full leading-6 text-sm py-12 px-6 mt-16 border-t border-gray-200'>
+      <div className='text-gray-500 space-y-2'>
         <div>
-          © {copyrightDate} <a href={siteConfig('LINK')} className='hover:opacity-70 transition-opacity text-black dark:text-white'>{siteConfig('AUTHOR')}</a>
+          © {copyrightDate} <a href={siteConfig('LINK')} className='hover:opacity-70 transition-opacity text-black'>{siteConfig('AUTHOR')}</a>
         </div>
         {siteConfig('BEI_AN') && (
           <div className='text-xs'>

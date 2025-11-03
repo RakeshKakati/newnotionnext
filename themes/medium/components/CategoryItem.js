@@ -6,8 +6,8 @@ export default function CategoryItem ({ selected, category, categoryCount }) {
       href={`/category/${category}`}
       passHref
       className={(selected
-        ? 'text-black dark:text-white font-medium '
-        : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white') +
+        ? 'text-black font-medium '
+        : 'text-gray-500 hover:text-black') +
       ' flex text-sm items-center duration-200 cursor-pointer py-0.5 font-normal whitespace-nowrap'}>
 
       <span>{category}{categoryCount && ` (${categoryCount})`}</span>

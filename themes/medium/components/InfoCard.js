@@ -10,8 +10,8 @@ const InfoCard = (props) => {
         <div className='cursor-pointer flex justify-center mb-4 hover:opacity-80 transition-opacity' onClick={ () => { Router.push('/about') }}>
             <LazyImage src={siteInfo?.icon} className='rounded-full' width={80} height={80} alt={siteConfig('AUTHOR')}/>
          </div>
-        <div className='text-lg font-semibold py-2 flex justify-center text-black dark:text-white'>{siteConfig('AUTHOR')}</div>
-        <div className='text-sm text-gray-600 mb-4 flex justify-center text-center dark:text-gray-400 leading-relaxed'>{siteConfig('BIO')}</div>
+        <div className='text-lg font-semibold py-2 flex justify-center text-black'>{siteConfig('AUTHOR')}</div>
+        <div className='text-sm text-gray-600 mb-4 flex justify-center text-center leading-relaxed'>{siteConfig('BIO')}</div>
         <SocialButton/>
     </div>
   </div>
