@@ -29,17 +29,19 @@ export async function getStaticPaths() {
 
   const from = 'slug-paths'
   const { allPages } = await getGlobalData({ from })
-  const paths = allPages
-    ?.filter(row => checkSlugHasMorThanTwoSlash(row))
-    .map(row => ({
-      params: {
-        prefix: row.slug.split('/')[0],
-        slug: row.slug.split('/')[1],
-        suffix: row.slug.split('/').slice(2)
-      }
-    }))
+  const paths = Array.isArray(allPages)
+    ? allPages
+        .filter(row => checkSlugHasMorThanTwoSlash(row))
+        .map(row => ({
+          params: {
+            prefix: row.slug.split('/')[0],
+            slug: row.slug.split('/')[1],
+            suffix: row.slug.split('/').slice(2)
+          }
+        }))
+    : []
   return {
-    paths: paths,
+    paths,
     fallback: true
   }
 }

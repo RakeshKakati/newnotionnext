@@ -22,7 +22,7 @@ export async function getStaticProps({ params: { keyword }, locale }) {
   const { allPages } = props
   const allPosts = allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
-  )
+  ) || []
   props.posts = await filterByMemCache(allPosts, keyword)
   props.postCount = props.posts.length
   const POST_LIST_STYLE = siteConfig(

@@ -35,10 +35,10 @@ export async function getStaticProps({ locale }) {
   // 处理分页
   props.posts = props.allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
-  )
+  ) || []
   delete props.allPages
 
-  const postsSortByDate = Object.create(props.posts)
+  const postsSortByDate = [...props.posts]
 
   postsSortByDate.sort((a, b) => {
     return b?.publishDate - a?.publishDate
@@ -56,7 +56,6 @@ export async function getStaticProps({ locale }) {
   })
 
   props.archivePosts = archivePosts
-  delete props.allPages
 
   return {
     props,

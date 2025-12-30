@@ -26,7 +26,7 @@ export async function getStaticProps({ params: { keyword, page }, locale }) {
   const { allPages } = props
   const allPosts = allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
-  )
+  ) || []
   props.posts = await filterByMemCache(allPosts, keyword)
   props.postCount = props.posts.length
   const POSTS_PER_PAGE = siteConfig('POSTS_PER_PAGE', 12, props?.NOTION_CONFIG)

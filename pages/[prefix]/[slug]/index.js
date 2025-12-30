@@ -28,18 +28,20 @@ export async function getStaticPaths() {
 
   // 根据slug中的 / 分割成prefix和slug两个字段 ; 例如 article/test
   // 最终用户可以通过  [domain]/[prefix]/[slug] 路径访问，即这里的 [domain]/article/test
-  const paths = allPages
-    ?.filter(row => checkSlugHasOneSlash(row))
-    .map(row => ({
-      params: { prefix: row.slug.split('/')[0], slug: row.slug.split('/')[1] }
-    }))
+  const paths = Array.isArray(allPages)
+    ? allPages
+        .filter(row => checkSlugHasOneSlash(row))
+        .map(row => ({
+          params: { prefix: row.slug.split('/')[0], slug: row.slug.split('/')[1] }
+        }))
+    : []
 
   // 增加一种访问路径 允许通过 [category]/[slug] 访问文章
   // 例如文章slug 是 test ，然后文章的分类category是 production
   // 则除了 [domain]/[slug] 以外，还支持分类名访问: [domain]/[category]/[slug]
 
   return {
-    paths: paths,
+    paths,
     fallback: true
   }
 }

@@ -10,14 +10,14 @@ import { useRouter } from 'next/router'
  * @returns
  */
 const Search = props => {
-  const { posts } = props
+  const { posts = [] } = props
 
   const router = useRouter()
   const keyword = router?.query?.s
 
   let filteredPosts
   // 静态过滤
-  if (keyword) {
+  if (keyword && Array.isArray(posts)) {
     filteredPosts = posts.filter(post => {
       const tagContent = post?.tags ? post?.tags.join(' ') : ''
       const categoryContent = post.category ? post.category.join(' ') : ''
@@ -46,7 +46,8 @@ export async function getStaticProps({ locale }) {
   const { allPages } = props
   props.posts = allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
-  )
+  ) || []
+  delete props.allPages
   return {
     props,
     revalidate: process.env.EXPORT
