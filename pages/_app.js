@@ -17,13 +17,6 @@ import { getQueryParam } from '../lib/utils'
 import BLOG from '@/blog.config'
 import ExternalPlugins from '@/components/ExternalPlugins'
 import SEO from '@/components/SEO'
-import dynamic from 'next/dynamic'
-
-// Clerk is conditionally loaded only when enabled
-const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-const ClerkProvider = enableClerk
-  ? dynamic(() => import('@clerk/nextjs').then(m => m.ClerkProvider), { ssr: false })
-  : null
 
 /**
  * App挂载DOM 入口文件
@@ -52,7 +45,7 @@ const MyApp = ({ Component, pageProps }) => {
     [theme]
   )
 
-  const content = (
+  return (
     <GlobalContextProvider {...pageProps}>
       <GLayout {...pageProps}>
         <SEO {...pageProps} />
@@ -61,13 +54,6 @@ const MyApp = ({ Component, pageProps }) => {
       <ExternalPlugins {...pageProps} />
     </GlobalContextProvider>
   )
-  
-  // Only wrap with ClerkProvider if Clerk is enabled
-  if (enableClerk && ClerkProvider) {
-    return <ClerkProvider>{content}</ClerkProvider>
-  }
-  
-  return content
 }
 
 export default MyApp
