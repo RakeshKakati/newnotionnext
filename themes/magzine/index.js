@@ -11,7 +11,9 @@ import DashboardHeader from '@/components/ui/dashboard/DashboardHeader'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { isBrowser } from '@/lib/utils'
-import { SignIn, SignUp } from '@clerk/nextjs'
+// Clerk removed - SignIn and SignUp components disabled
+const SignIn = () => null
+const SignUp = () => null
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
