@@ -1,11 +1,18 @@
-import { SignOutButton } from '@clerk/nextjs'
+import dynamic from 'next/dynamic'
+
+const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+
+// Only load SignOutButton component when Clerk is enabled
+const SignOutButton = enableClerk
+  ? dynamic(() => import('@clerk/nextjs').then(m => m.SignOutButton), { ssr: false })
+  : null
+
 /**
  * 控制台登出按钮
  * @returns
  */
 export default function DashboardSignOutButton() {
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-  if (!enableClerk) {
+  if (!enableClerk || !SignOutButton) {
     return null
   }
   return (

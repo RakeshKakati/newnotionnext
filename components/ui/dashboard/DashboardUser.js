@@ -1,11 +1,18 @@
-import { UserProfile } from '@clerk/nextjs'
+import dynamic from 'next/dynamic'
+
+const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+
+// Only load UserProfile component when Clerk is enabled
+const UserProfile = enableClerk
+  ? dynamic(() => import('@clerk/nextjs').then(m => m.UserProfile), { ssr: false })
+  : null
+
 /**
  * 控制台用户账号面板
  * @returns
  */
 export default function DashboardUser() {
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-  if (!enableClerk) {
+  if (!enableClerk || !UserProfile) {
     return null
   }
   return (
