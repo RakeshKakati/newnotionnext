@@ -86,14 +86,14 @@ const nextConfig = {
   },
   output: process.env.EXPORT ? 'export' : process.env.NEXT_BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
   staticPageGenerationTimeout: 120,
-  // 多语言， 在export时禁用
-  i18n: process.env.EXPORT
-    ? undefined
-    : {
-        defaultLocale: BLOG.LANG.slice(0, 2),
-        // 支持的所有多语言,按需填写即可
-        locales
-      },
+  // 多语言已禁用 - 单语言站点不需要i18n
+  // i18n: process.env.EXPORT
+  //   ? undefined
+  //   : {
+  //       defaultLocale: BLOG.LANG.slice(0, 2),
+  //       // 支持的所有多语言,按需填写即可
+  //       locales
+  //     },
   images: {
     // 图片压缩
     formats: ['image/avif', 'image/webp'],
